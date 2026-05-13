@@ -1,0 +1,32 @@
+Sistema de Gestão Veterinária
+
+Funcionalidades:
+    cadastro de pets
+    tutores
+    consultas
+    vacinação
+    prontuário
+    exames
+    estoque de medicamentos
+    notificações de vacina
+
+O que você aprende:
+    relacionamentos complexos
+    autenticação
+    upload de arquivos
+    filas
+    agendamentos
+    regras de negócio reais
+    Evoluções
+    pagamentos
+    integração WhatsApp
+    dashboard
+    relatórios
+    multi-clínica
+
+Tecnologias:
+    PostgreSQL
+    Docker
+    Spring Boot
+    Redis
+    RabbitMQ
