@@ -11,37 +11,27 @@ O projeto esta em fase inicial. Atualmente ele possui a estrutura base de uma ap
 - Cadastro de tutores.
 - Cadastro de pacientes veterinarios.
 - Associacao entre tutor e seus pacientes.
-- Classificacao dos pacientes por tipo: canino, felino ou ave.
+- Classificacao dos pacientes por tipo
 - Registro de racas por categoria.
 - Controle futuro de consultas, vacinas, exames e estoque.
 
-## Funcionalidades implementadas
-
-- Classe principal da aplicacao Spring Boot.
-- Modelo `Patients` para representar pacientes veterinarios.
-- Modelo `Tutors` para representar tutores.
-- Modelo inicial `Stock`, ainda sem atributos.
-- Interface inicial `Medication`, ainda sem metodos.
-- Enums para classificacao e racas:
-  - `Classifications`
-  - `CanineRaces`
-  - `FelineRaces`
-  - `BirdRaces`
 
 ## Tecnologias
 
 - Java 21
 - Spring Boot
 - Spring Web MVC
-- Spring Data MongoDB
+- PostgreSQL
 - Maven
 - Lombok
+- Redis
+- RabbitMQ
+- Docker
 
 ## Requisitos
 
 - JDK 21 ou superior.
 - Maven 3.9 ou superior.
-- MongoDB disponivel localmente ou em um ambiente configurado.
 
 ## Como executar
 
