@@ -1,32 +1,121 @@
-Sistema de Gestão Veterinária
+# Sistema de Gestao Veterinaria
 
-Funcionalidades:
-    cadastro de pets
-    tutores
-    consultas
-    vacinação
-    prontuário
-    exames
-    estoque de medicamentos
-    notificações de vacina
+API REST em desenvolvimento para apoiar o cadastro e a gestao de pacientes veterinarios e seus tutores.
 
-O que você aprende:
-    relacionamentos complexos
-    autenticação
-    upload de arquivos
-    filas
-    agendamentos
-    regras de negócio reais
-    Evoluções
-    pagamentos
-    integração WhatsApp
-    dashboard
-    relatórios
-    multi-clínica
+## Status do projeto
 
-Tecnologias:
-    PostgreSQL
-    Docker
-    Spring Boot
-    Redis
-    RabbitMQ
+O projeto esta em fase inicial. Atualmente ele possui a estrutura base de uma aplicacao Spring Boot e alguns modelos de dominio, mas ainda nao possui controllers, services, repositories ou endpoints REST implementados.
+
+## Funcionalidades previstas
+
+- Cadastro de tutores.
+- Cadastro de pacientes veterinarios.
+- Associacao entre tutor e seus pacientes.
+- Classificacao dos pacientes por tipo: canino, felino ou ave.
+- Registro de racas por categoria.
+- Controle futuro de consultas, vacinas, exames e estoque.
+
+## Funcionalidades implementadas
+
+- Classe principal da aplicacao Spring Boot.
+- Modelo `Patients` para representar pacientes veterinarios.
+- Modelo `Tutors` para representar tutores.
+- Modelo inicial `Stock`, ainda sem atributos.
+- Interface inicial `Medication`, ainda sem metodos.
+- Enums para classificacao e racas:
+  - `Classifications`
+  - `CanineRaces`
+  - `FelineRaces`
+  - `BirdRaces`
+
+## Tecnologias
+
+- Java 21
+- Spring Boot
+- Spring Web MVC
+- Spring Data MongoDB
+- Maven
+- Lombok
+
+## Requisitos
+
+- JDK 21 ou superior.
+- Maven 3.9 ou superior.
+- MongoDB disponivel localmente ou em um ambiente configurado.
+
+## Como executar
+
+Clone o repositorio e acesse a pasta do projeto:
+
+```bash
+git clone https://github.com/VitorLopesV/VeterinarianAPI.git
+cd VeterinarianAPI
+```
+
+Execute a aplicacao com Maven:
+
+```bash
+mvn spring-boot:run
+```
+
+Por padrao, a aplicacao Spring Boot sobe em:
+
+```text
+http://localhost:8080
+```
+
+## Configuracao do MongoDB
+
+Crie um arquivo `application.properties` em `src/main/resources` caso ainda nao exista e configure a conexao com o MongoDB:
+
+```properties
+spring.data.mongodb.uri=mongodb://localhost:27017/veterinarian_api
+```
+
+## Estrutura atual
+
+```text
+src/main/java/br/com/veterinarianAPI
++-- VeterinarianApplication.java
++-- enums
+|   +-- BirdRaces.java
+|   +-- CanineRaces.java
+|   +-- Classifications.java
+|   +-- FelineRaces.java
++-- interfaces
+|   +-- Medication.java
++-- model
+    +-- Patients.java
+    +-- Stock.java
+    +-- Tutors.java
+```
+
+## Endpoints
+
+Ainda nao existem endpoints REST implementados.
+
+Sugestao de endpoints futuros:
+
+| Metodo | Rota | Descricao |
+| --- | --- | --- |
+| `POST` | `/tutors` | Cadastrar um tutor |
+| `GET` | `/tutors` | Listar tutores |
+| `GET` | `/tutors/{id}` | Buscar tutor por ID |
+| `PUT` | `/tutors/{id}` | Atualizar tutor |
+| `DELETE` | `/tutors/{id}` | Remover tutor |
+| `POST` | `/patients` | Cadastrar um paciente |
+| `GET` | `/patients` | Listar pacientes |
+| `GET` | `/patients/{id}` | Buscar paciente por ID |
+| `PUT` | `/patients/{id}` | Atualizar paciente |
+| `DELETE` | `/patients/{id}` | Remover paciente |
+
+## Proximos passos
+
+- Criar entidades/documentos completos para MongoDB.
+- Criar repositories para persistencia.
+- Criar services para regras de negocio.
+- Criar controllers REST.
+- Adicionar validacoes nos DTOs de entrada.
+- Criar testes automatizados.
+- Documentar os endpoints apos a implementacao.
+
