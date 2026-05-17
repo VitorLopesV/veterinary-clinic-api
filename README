@@ -13,7 +13,7 @@ O projeto esta em fase inicial. Atualmente ele possui a estrutura base de uma ap
 - Associacao entre tutor e seus pacientes.
 - Classificacao dos pacientes por tipo
 - Registro de racas por categoria.
-- Controle futuro de consultas, vacinas, exames e estoque.
+- Controle futuro de consultas, vacinas e exames.
 
 
 ## Tecnologias

@@ -27,8 +27,6 @@ public class Patients {
     /** Sexo do paciente. */
     private String sex;
 
-    /** Raca felina do paciente. */
-    private FelineRaces felineRaces;
 
     /** Classificacao do paciente. */
     private Classifications classification;
