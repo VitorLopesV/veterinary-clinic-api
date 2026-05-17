@@ -1,16 +1,24 @@
 package br.com.veterinarianAPI.model;
 
-import java.util.Date;
-import java.util.List;
+/**
+ * Representa um tutor cadastrado no sistema.
+ * <p>
+ * Armazena dados basicos do tutor, como nome, email, cpf, telefone e endereco.
+ */
+public class Tutor {
 
-public class Tutors {
-
+    /** Nome do tutor. */
     private String name;
-    private String surname;
-    private String email;
-    private String cpf;
-    private Date dateOfBirth;
-    private String address;
-    private List<Patients> patients;
 
+    /** Email do tutor. */
+    private String email;
+
+    /** CPF do tutor. */
+    private String cpf;
+
+    /** Telefone do tutor. */
+    private String phone;
+
+    /** Endereco do tutor. */
+    private String address;
 }
