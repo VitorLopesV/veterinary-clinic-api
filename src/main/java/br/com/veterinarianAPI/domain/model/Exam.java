@@ -1,6 +1,6 @@
-package br.com.veterinarianAPI.model;
+package br.com.veterinarianAPI.domain.model;
 
-import br.com.veterinarianAPI.enums.ExamType;
+import br.com.veterinarianAPI.domain.enums.ExamType;
 
 import java.time.LocalDateTime;
 

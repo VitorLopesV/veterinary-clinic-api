@@ -1,6 +1,6 @@
-package br.com.veterinarianAPI.model;
+package br.com.veterinarianAPI.domain.model;
 
-import br.com.veterinarianAPI.enums.Classifications;
+import br.com.veterinarianAPI.domain.enums.Classifications;
 import lombok.Data;
 
 import java.util.Date;

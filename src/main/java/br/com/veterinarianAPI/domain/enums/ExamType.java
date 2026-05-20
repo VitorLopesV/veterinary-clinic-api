@@ -1,4 +1,4 @@
-package br.com.veterinarianAPI.enums;
+package br.com.veterinarianAPI.domain.enums;
 
 /**
  * Representa os tipos de exame disponiveis no sistema.

@@ -1,11 +1,14 @@
-package br.com.veterinarianAPI.model;
+package br.com.veterinarianAPI.infrastructure.bd;
 
-/**
- * Representa um tutor cadastrado no sistema.
- * <p>
- * Armazena dados basicos do tutor, como nome, email, cpf, telefone e endereco.
- */
-public class Tutor {
+import jakarta.persistence.*;
+
+@Table(name="tutors")
+@Entity
+public class TutorEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     /** Nome do tutor. */
     private String name;
@@ -21,4 +24,5 @@ public class Tutor {
 
     /** Endereco do tutor. */
     private String address;
+
 }

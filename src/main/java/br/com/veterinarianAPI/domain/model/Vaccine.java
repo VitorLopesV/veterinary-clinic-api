@@ -1,4 +1,4 @@
-package br.com.veterinarianAPI.model;
+package br.com.veterinarianAPI.domain.model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

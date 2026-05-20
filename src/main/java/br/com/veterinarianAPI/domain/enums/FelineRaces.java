@@ -1,4 +1,4 @@
-package br.com.veterinarianAPI.enums;
+package br.com.veterinarianAPI.domain.enums;
 
 /**
  * Representa as racas felinas disponiveis no sistema.
