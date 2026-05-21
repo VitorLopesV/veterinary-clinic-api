@@ -1,11 +1,15 @@
 package br.com.veterinarianAPI.infrastructure.bd;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "consultations")
+@Data
+@NoArgsConstructor
 public class ConsultationEntity {
 
     @Id

@@ -2,11 +2,15 @@ package br.com.veterinarianAPI.infrastructure.bd;
 
 import br.com.veterinarianAPI.domain.enums.Classifications;
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Table(name ="patients")
 @Entity
+@Data
+@NoArgsConstructor
 public class PatientEntity {
 
     @Id

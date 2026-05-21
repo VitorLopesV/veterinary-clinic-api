@@ -1,9 +1,13 @@
 package br.com.veterinarianAPI.infrastructure.bd;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Table(name="tutors")
 @Entity
+@Data
+@NoArgsConstructor
 public class TutorEntity {
 
     @Id
