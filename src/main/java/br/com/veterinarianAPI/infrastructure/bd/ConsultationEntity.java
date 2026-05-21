@@ -32,5 +32,4 @@ public class ConsultationEntity {
 
     /** Data da consulta. */
     private LocalDateTime consultationDate;
-
 }

@@ -1,10 +1,10 @@
-package br.com.veterinarianAPI.presentation.controller;
+package br.com.veterinarianAPI.presentation;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/patients")
-public class PatientController {
+@RequestMapping("/consultations")
+public class ConsultationController {
 
 }
