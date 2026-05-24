@@ -35,7 +35,11 @@ public class Tutor {
     }
 
     public Tutor(String name, String email, String cpf, String phone, String address) {
-        this(null, name, email, cpf, phone, address);
+        this.name = name;
+        this.email = email;
+        this.cpf = cpf;
+        this.phone = phone;
+        this.address = address;
     }
 
     public Long getId() {

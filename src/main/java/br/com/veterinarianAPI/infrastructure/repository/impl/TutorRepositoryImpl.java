@@ -20,8 +20,11 @@ public class TutorRepositoryImpl implements TutorRespository {
 
     @Override
     public Tutor save(Tutor tutor) {
-        TutorEntity saved = jpaTutorRepository.save(toEntity(tutor));
-        return toDomain(saved);
+        TutorEntity saved = jpaTutorRepository.save(toEntity(tutor)); // Transforma o tutor em tutorEntity
+        return toDomain(saved);// Está voltando o tipo para Tutor
+        // Esse procedimento é feito pois não estou usando
+        // Tutor como minha entidade mas sim o TutorEntity para isolar o uso de tecnologias externas)
+
     }
 
     @Override
