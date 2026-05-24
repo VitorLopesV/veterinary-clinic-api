@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ConsultationRepository {
 
-    void save(Consultation consultation);
+    Consultation save(Consultation consultation);
 
     void delete(Consultation consultation);
 

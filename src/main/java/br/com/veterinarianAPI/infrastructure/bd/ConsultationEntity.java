@@ -16,10 +16,8 @@ public class ConsultationEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /** Paciente relacionado a consulta. */
-    @ManyToOne  // Informa que 1 paciente pode ter várias consultas
-    @JoinColumn(name = "patient_id") // Define qual coluna do banco será usada como chave estrangeira.
-    private PatientEntity patient;
+    /** Identificador do paciente. */
+    private Long patientId;
 
     /** Nome do veterinario responsavel pela consulta. */
     private String veterinarianName;
