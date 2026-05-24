@@ -20,23 +20,23 @@ public class JpaPatientRepositoryImpl implements PatientRepository {
 
     @Override
     public Patient save(Patient patient) {
-        PatientEntity saved = jpaPatientRepository.save(toEntity(patient));
+        PatientEntity saved = this.jpaPatientRepository.save(toEntity(patient));
         return toDomain(saved);
     }
 
     @Override
     public void delete(Patient patient) {
-        jpaPatientRepository.delete(toEntity(patient));
+        this.jpaPatientRepository.delete(toEntity(patient));
     }
 
     @Override
     public List<Patient> findAll() {
-        return jpaPatientRepository.findAll().stream().map(this::toDomain).collect(Collectors.toList());
+        return this.jpaPatientRepository.findAll().stream().map(this::toDomain).collect(Collectors.toList());
     }
 
     @Override
     public Patient findById(Long id) {
-        return jpaPatientRepository.findById(id).map(this::toDomain).orElse(null);
+        return this.jpaPatientRepository.findById(id).map(this::toDomain).orElse(null);
     }
 
     private PatientEntity toEntity(Patient patient) {

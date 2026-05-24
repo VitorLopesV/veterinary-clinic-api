@@ -20,7 +20,7 @@ public class TutorRepositoryImpl implements TutorRespository {
 
     @Override
     public Tutor save(Tutor tutor) {
-        TutorEntity saved = jpaTutorRepository.save(toEntity(tutor)); // Transforma o tutor em tutorEntity
+        TutorEntity saved = this.jpaTutorRepository.save(toEntity(tutor)); // Transforma o tutor em tutorEntity
         return toDomain(saved);// Está voltando o tipo para Tutor
         // Esse procedimento é feito pois não estou usando
         // Tutor como minha entidade mas sim o TutorEntity para isolar o uso de tecnologias externas)
@@ -29,12 +29,12 @@ public class TutorRepositoryImpl implements TutorRespository {
 
     @Override
     public void delete(Tutor tutor) {
-        jpaTutorRepository.delete(toEntity(tutor));
+        this.jpaTutorRepository.delete(toEntity(tutor));
     }
 
     @Override
     public List<Tutor> findAll() {
-        return jpaTutorRepository.findAll()
+        return this.jpaTutorRepository.findAll()
                 .stream()
                 .map(this::toDomain)
                 .collect(Collectors.toList());
@@ -42,7 +42,7 @@ public class TutorRepositoryImpl implements TutorRespository {
 
     @Override
     public Tutor findById(Long id) {
-        return jpaTutorRepository.findById(id)
+        return this.jpaTutorRepository.findById(id)
                 .map(this::toDomain)
                 .orElse(null);
     }
