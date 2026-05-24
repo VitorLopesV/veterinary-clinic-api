@@ -1,29 +1,28 @@
 package br.com.veterinarianAPI.infrastructure.bd;
 
 import br.com.veterinarianAPI.domain.enums.Classifications;
+import br.com.veterinarianAPI.domain.model.Tutor;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Table(name ="patients")
+@Table(name = "patients")
 @Entity
 @Data
 @NoArgsConstructor
 public class PatientEntity {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     /** Nome do paciente. */
     private String name;
 
-    /** Tutor responsavel pelo paciente. */
-    @OneToOne() // Informa que 1 paciente só vai ter 1 tutor
-    @JoinColumn(name ="tutor_id") // Define qual coluna do banco será usada como chave estrangeira.
-    private TutorEntity tutor;
+    /** Identificador do tutor. */
+    private Long tutorId;
 
     /** Data de nascimento do paciente. */
     private Date dateOfBirth;

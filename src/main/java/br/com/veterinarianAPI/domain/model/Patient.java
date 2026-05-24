@@ -1,7 +1,6 @@
 package br.com.veterinarianAPI.domain.model;
 
 import br.com.veterinarianAPI.domain.enums.Classifications;
-import lombok.Data;
 
 import java.util.Date;
 
@@ -11,14 +10,16 @@ import java.util.Date;
  * Armazena dados basicos do animal, como nome, tutor, data de nascimento,
  * sexo, raca e classificacao.
  */
-@Data
 public class Patient {
+
+    /** Identificador do paciente. */
+    private Long id;
 
     /** Nome do paciente. */
     private String name;
 
-    /** Tutor responsavel pelo paciente. */
-    private Tutor tutor;
+    /** Id do tutor responsavel pelo paciente. */
+    private Long tutorId;
 
     /** Data de nascimento do paciente. */
     private Date dateOfBirth;
@@ -38,4 +39,96 @@ public class Patient {
     /** Sexo do paciente. */
     private String sex;
 
+    public Patient(Long id, String name, Long tutorId, Date dateOfBirth, double weight, String race,
+                   Classifications classification, boolean isCastrated, String sex) {
+        this.id = id;
+        this.name = name;
+        this.tutorId = tutorId;
+        this.dateOfBirth = dateOfBirth;
+        this.weight = weight;
+        this.race = race;
+        this.classification = classification;
+        this.isCastrated = isCastrated;
+        this.sex = sex;
+    }
+
+    public Patient(String name, Long tutorId, Date dateOfBirth, double weight, String race,
+                   Classifications classification, boolean isCastrated, String sex) {
+        this.name = name;
+        this.tutorId = tutorId;
+        this.dateOfBirth = dateOfBirth;
+        this.weight = weight;
+        this.race = race;
+        this.classification = classification;
+        this.isCastrated = isCastrated;
+        this.sex = sex;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getTutorId() {
+        return tutorId;
+    }
+
+    public void setTutorId(Long tutorId) {
+        this.tutorId = tutorId;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public String getRace() {
+        return race;
+    }
+
+    public void setRace(String race) {
+        this.race = race;
+    }
+
+    public Classifications getClassification() {
+        return classification;
+    }
+
+    public void setClassification(Classifications classification) {
+        this.classification = classification;
+    }
+
+    public boolean isCastrated() {
+        return isCastrated;
+    }
+
+    public void setCastrated(boolean castrated) {
+        isCastrated = castrated;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 }

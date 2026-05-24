@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PatientRepository {
 
-    void save(Patient patient);
+    Patient save(Patient patient);
 
     void delete(Patient patient);
 
