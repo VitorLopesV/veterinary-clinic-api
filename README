@@ -38,8 +38,8 @@ O projeto esta em fase inicial. Atualmente ele possui a estrutura base de uma ap
 Clone o repositorio e acesse a pasta do projeto:
 
 ```bash
-git clone https://github.com/VitorLopesV/VeterinarianAPI.git
-cd VeterinarianAPI
+git clone https://github.com/VitorLopesV/veterinary-clinic-api.git
+cd veterinary-clinic-api
 ```
 
 Execute a aplicacao com Maven:
@@ -59,14 +59,14 @@ http://localhost:8080
 Crie um arquivo `application.properties` em `src/main/resources` caso ainda nao exista e configure a conexao com o MongoDB:
 
 ```properties
-spring.data.mongodb.uri=mongodb://localhost:27017/veterinarian_api
+spring.data.mongodb.uri=mongodb://localhost:27017/veterinary_clinic_api
 ```
 
 ## Estrutura atual
 
 ```text
-src/main/java/br/com/veterinarianAPI
-+-- VeterinarianApplication.java
+src/main/java/br/com/veterinaryclinicapi
++-- VeterinaryClinicApplication.java
 +-- enums
 |   +-- BirdRaces.java
 |   +-- CanineRaces.java
