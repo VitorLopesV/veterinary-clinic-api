@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class JpaPatientRepositoryImpl implements PatientRepository {
+public class PatientRepositoryImpl implements PatientRepository {
 
     private final JpaPatientRepository jpaPatientRepository;
 
-    public JpaPatientRepositoryImpl(JpaPatientRepository jpaPatientRepository) {
+    public PatientRepositoryImpl(JpaPatientRepository jpaPatientRepository) {
         this.jpaPatientRepository = jpaPatientRepository;
     }
 

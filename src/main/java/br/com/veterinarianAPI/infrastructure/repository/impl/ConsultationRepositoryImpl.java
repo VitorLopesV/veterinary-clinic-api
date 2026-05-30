@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class JpaConsultationRepositoryImpl implements ConsultationRepository {
+public class ConsultationRepositoryImpl implements ConsultationRepository {
 
     private final JpaConsultationRepository repository;
 
-    public JpaConsultationRepositoryImpl(JpaConsultationRepository repository) {
+    public ConsultationRepositoryImpl(JpaConsultationRepository repository) {
         this.repository = repository;
     }
 

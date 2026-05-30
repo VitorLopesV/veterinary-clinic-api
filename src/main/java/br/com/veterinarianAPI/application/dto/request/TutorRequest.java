@@ -1,9 +1,13 @@
 package br.com.veterinarianAPI.application.dto.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @Getter
+@AllArgsConstructor
 public class TutorRequest {
+
+    private Long id;
 
     /** Nome do tutor. */
     private String name;
