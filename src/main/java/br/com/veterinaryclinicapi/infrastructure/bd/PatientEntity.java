@@ -1,8 +1,8 @@
 package br.com.veterinaryclinicapi.infrastructure.bd;
 
 import br.com.veterinaryclinicapi.domain.enums.Classifications;
-import br.com.veterinaryclinicapi.domain.model.Tutor;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +12,7 @@ import java.util.Date;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class PatientEntity {
 
     @Id
