@@ -1,6 +1,7 @@
 package br.com.veterinaryclinicapi.infrastructure.bd;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Table(name = "consultations")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class ConsultationEntity {
 
     @Id
