@@ -53,9 +53,35 @@ public class PatientService {
         return mapper.toResponse(patient);
     }
 
+    public PatientResponse update(Long id, PatientRequest patientRequest) {
+        Patient patient = this.findPatientById(id);
+
+        patient.setName(patientRequest.getName());
+        patient.setTutorId(patientRequest.getTutorId());
+        patient.setDateOfBirth(patientRequest.getDateOfBirth());
+        patient.setWeight(patientRequest.getWeight());
+        patient.setRace(patientRequest.getRace());
+        patient.setClassification(patientRequest.getClassification());
+        patient.setCastrated(patientRequest.isCastrated());
+        patient.setSex(patientRequest.getSex());
+
+        Patient savedPatient = this.repository.save(patient);
+        return mapper.toResponse(savedPatient);
+    }
+
     public void remove(Long id) {
-        Patient patientToRemove = this.repository.findById(id);
+        Patient patientToRemove = this.findPatientById(id);
         this.repository.delete(patientToRemove);
+    }
+
+    private Patient findPatientById(Long id) {
+        Patient patient = this.repository.findById(id);
+
+        if (patient == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Patient Not Found");
+        }
+
+        return patient;
     }
 
 }
