@@ -1,37 +1,66 @@
-# Sistema de Gestao Veterinaria
+# Veterinary Clinic API
 
-API REST em desenvolvimento para apoiar o cadastro e a gestao de pacientes veterinarios e seus tutores.
+API REST para gestão de uma clínica veterinária, com cadastro de tutores, pacientes e consultas.
 
-## Status do projeto
+O projeto foi estruturado em camadas para separar entrada HTTP, regras de aplicação, domínio e persistência. A versão
+atual utiliza Spring Boot, Spring Web MVC, Spring Data JPA e MySQL.
 
-O projeto esta em fase inicial. Atualmente ele possui a estrutura base de uma aplicacao Spring Boot e alguns modelos de dominio, mas ainda nao possui controllers, services, repositories ou endpoints REST implementados.
+## Status
 
-## Funcionalidades previstas
+Implementado:
 
-- Cadastro de tutores.
-- Cadastro de pacientes veterinarios.
-- Associacao entre tutor e seus pacientes.
-- Classificacao dos pacientes por tipo
-- Registro de racas por categoria.
-- Controle futuro de consultas, vacinas e exames.
+- CRUD de tutores.
+- CRUD de pacientes.
+- CRUD de consultas.
+- Persistencia relacional com JPA/Hibernate.
+- Separacao entre DTOs, modelos de dominio, entidades JPA, repositories e services.
+- Tratamento básico de erros para registros nao encontrados.
+- Regra de conflito para cadastro de tutor com CPF ja existente.
 
+Em evolução:
+
+- Validações formais nos DTOs de entrada.
+- Relacionamentos JPA entre tutor, paciente e consulta.
+- Testes automatizados.
+- Documentação OpenAPI/Swagger.
 
 ## Tecnologias
 
 - Java 21
-- Spring Boot
+- Spring Boot 4.0.6
 - Spring Web MVC
-- PostgreSQL
+- Spring Data JPA
+- Hibernate
+- MySQL
 - Maven
 - Lombok
-- Redis
-- RabbitMQ
-- Docker
 
 ## Requisitos
 
-- JDK 21 ou superior.
-- Maven 3.9 ou superior.
+- JDK 21 ou superior
+- Maven 3.9 ou superior
+- MySQL em execucao local
+
+## Configuração
+
+A aplicacao usa as propriedades definidas em `src/main/resources/application.properties`:
+
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/veterinary_clinic
+spring.datasource.username=root
+spring.datasource.password=root
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+```
+
+Antes de executar, crie o banco de dados:
+
+```sql
+CREATE DATABASE veterinary_clinic;
+```
+
+Se o usuario, senha, host ou porta do MySQL forem diferentes no seu ambiente, atualize o arquivo `application.properties`.
 
 ## Como executar
 
@@ -42,70 +71,175 @@ git clone https://github.com/VitorLopesV/veterinary-clinic-api.git
 cd veterinary-clinic-api
 ```
 
-Execute a aplicacao com Maven:
+Execute a aplicacao:
 
 ```bash
 mvn spring-boot:run
 ```
 
-Por padrao, a aplicacao Spring Boot sobe em:
+Por padrao, a API fica disponivel em:
 
 ```text
 http://localhost:8080
 ```
 
-## Configuracao do MongoDB
+## Como verificar o build
 
-Crie um arquivo `application.properties` em `src/main/resources` caso ainda nao exista e configure a conexao com o MongoDB:
-
-```properties
-spring.data.mongodb.uri=mongodb://localhost:27017/veterinary_clinic_api
-```
-
-## Estrutura atual
-
-```text
-src/main/java/br/com/veterinaryclinicapi
-+-- VeterinaryClinicApplication.java
-+-- enums
-|   +-- BirdRaces.java
-|   +-- CanineRaces.java
-|   +-- Classifications.java
-|   +-- FelineRaces.java
-+-- interfaces
-|   +-- Medication.java
-+-- model
-    +-- Patients.java
-    +-- Stock.java
-    +-- Tutors.java
+```bash
+mvn test
 ```
 
 ## Endpoints
 
-Ainda nao existem endpoints REST implementados.
-
-Sugestao de endpoints futuros:
+### Tutores
 
 | Metodo | Rota | Descricao |
 | --- | --- | --- |
-| `POST` | `/tutors` | Cadastrar um tutor |
-| `GET` | `/tutors` | Listar tutores |
-| `GET` | `/tutors/{id}` | Buscar tutor por ID |
-| `PUT` | `/tutors/{id}` | Atualizar tutor |
-| `DELETE` | `/tutors/{id}` | Remover tutor |
-| `POST` | `/patients` | Cadastrar um paciente |
-| `GET` | `/patients` | Listar pacientes |
-| `GET` | `/patients/{id}` | Buscar paciente por ID |
-| `PUT` | `/patients/{id}` | Atualizar paciente |
-| `DELETE` | `/patients/{id}` | Remover paciente |
+| `POST` | `/tutors` | Cadastra um tutor |
+| `GET` | `/tutors` | Lista todos os tutores |
+| `GET` | `/tutors/{id}` | Busca um tutor por ID |
+| `PATCH` | `/tutors/{id}` | Atualiza parcialmente um tutor |
+| `DELETE` | `/tutors/{id}` | Remove um tutor |
 
-## Proximos passos
+Exemplo de cadastro:
 
-- Criar entidades/documentos completos para MongoDB.
-- Criar repositories para persistencia.
-- Criar services para regras de negocio.
-- Criar controllers REST.
-- Adicionar validacoes nos DTOs de entrada.
-- Criar testes automatizados.
-- Documentar os endpoints apos a implementacao.
+```json
+{
+  "name": "Maria Souza",
+  "email": "maria.souza@email.com",
+  "cpf": "12345678900",
+  "phone": "11999999999",
+  "address": "Rua das Flores, 100"
+}
+```
 
+### Pacientes
+
+| Metodo | Rota | Descricao |
+| --- | --- | --- |
+| `POST` | `/patients` | Cadastra um paciente |
+| `GET` | `/patients` | Lista todos os pacientes |
+| `GET` | `/patients/{id}` | Busca um paciente por ID |
+| `PUT` | `/patients/{id}` | Atualiza todos os dados de um paciente |
+| `DELETE` | `/patients/{id}` | Remove um paciente |
+
+Exemplo de cadastro:
+
+```json
+{
+  "name": "Thor",
+  "tutorId": 1,
+  "dateOfBirth": "2021-05-10T00:00:00.000+00:00",
+  "weight": 12.5,
+  "race": "Yorkshire",
+  "classification": "CANINE",
+  "castrated": true,
+  "sex": "M"
+}
+```
+
+Valores aceitos em `classification`:
+
+- `CANINE`
+- `FELINE`
+- `BIRDS`
+
+### Consultas
+
+| Metodo | Rota | Descricao |
+| --- | --- | --- |
+| `POST` | `/consultations` | Cadastra uma consulta |
+| `GET` | `/consultations` | Lista todas as consultas |
+| `GET` | `/consultations/{id}` | Busca uma consulta por ID |
+| `PUT` | `/consultations/{id}` | Atualiza todos os dados de uma consulta |
+| `DELETE` | `/consultations/{id}` | Remove uma consulta |
+
+Exemplo de cadastro:
+
+```json
+{
+  "patientId": 1,
+  "veterinarianName": "Dr. Joao Lima",
+  "crmv": "CRMV-SP 12345",
+  "description": "Consulta de rotina",
+  "consultationDate": "2026-06-09T14:30:00"
+}
+```
+
+## Codigos HTTP
+
+| Codigo | Quando ocorre |
+| --- | --- |
+| `201 Created` | Registro criado com sucesso |
+| `200 OK` | Consulta ou atualizacao realizada com sucesso |
+| `204 No Content` | Registro removido com sucesso |
+| `404 Not Found` | Registro nao encontrado |
+| `409 Conflict` | CPF ja cadastrado para outro tutor |
+
+## Estrutura do projeto
+
+```text
+src/main/java/br/com/veterinaryclinicapi
+|-- VeterinaryClinicApplication.java
+|-- presentation
+|   |-- TutorController.java
+|   |-- PatientController.java
+|   `-- ConsultationController.java
+|-- application
+|   |-- dto
+|   |-- mapper
+|   `-- service
+|-- domain
+|   |-- enums
+|   |-- model
+|   `-- repository
+`-- infrastructure
+    |-- bd
+    |-- mapper
+    `-- repository
+```
+
+## Modelo atual
+
+### Tutor
+
+Campos principais:
+
+- `id`
+- `name`
+- `email`
+- `cpf`
+- `phone`
+- `address`
+
+### Patient
+
+Campos principais:
+
+- `id`
+- `name`
+- `tutorId`
+- `dateOfBirth`
+- `weight`
+- `race`
+- `classification`
+- `castrated`
+- `sex`
+
+### Consultation
+
+Campos principais:
+
+- `id`
+- `patientId`
+- `veterinarianName`
+- `crmv`
+- `description`
+- `consultationDate`
+
+## Observacoes tecnicas
+
+- O projeto usa entidades JPA separadas dos modelos de dominio.
+- Os vinculos entre tutor, paciente e consulta sao armazenados por ID (`tutorId` e `patientId`), sem relacionamento JPA anotado no momento.
+- As classes `Exam` e `Vaccine` existem no dominio, mas ainda nao possuem endpoints ou persistencia implementados.
+- O Hibernate esta configurado com `ddl-auto=update`, criando ou atualizando tabelas conforme as entidades atuais.
