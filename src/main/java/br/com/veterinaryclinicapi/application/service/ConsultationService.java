@@ -47,8 +47,30 @@ public class ConsultationService {
         return consultations;
     }
 
+    public ConsultationResponse update(Long id, ConsultationRequest consultationRequest) {
+        Consultation consultation = this.findConsultationById(id);
+
+        consultation.setVeterinarianName(consultationRequest.getVeterinarianName());
+        consultation.setCrmv(consultationRequest.getCrmv());
+        consultation.setDescription(consultationRequest.getDescription());
+        consultation.setConsultationDate(consultationRequest.getConsultationDate());
+
+        Consultation savedConsultation = this.repository.save(consultation);
+        return mapper.toResponse(savedConsultation);
+    }
+
     public void remove(Long id) {
-        Consultation consultation = this.repository.findById(id);
+        Consultation consultation = this.findConsultationById(id);
         this.repository.delete(consultation);
+    }
+
+    private Consultation findConsultationById(Long id) {
+        Consultation consultation = this.repository.findById(id);
+
+        if (consultation == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Consultation Not Found");
+        }
+
+        return consultation;
     }
 }
