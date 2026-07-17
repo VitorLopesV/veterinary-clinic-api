@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class PatientMapper {
 
+    public PatientMapper() {
+    }
+
     public PatientEntity toEntity(Patient patient) {
         return new PatientEntity(patient.getId(), patient.getName(), patient.getTutorId(), patient.getDateOfBirth(),
                 patient.getWeight(), patient.getRace(), patient.getClassification(), patient.isCastrated(),
@@ -18,5 +21,4 @@ public class PatientMapper {
                 entity.getWeight(), entity.getRace(), entity.getClassification(), entity.isCastrated(),
                 entity.getSex());
     }
-
 }
