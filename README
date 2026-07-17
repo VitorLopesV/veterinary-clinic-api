@@ -83,6 +83,18 @@ Por padrao, a API fica disponivel em:
 http://localhost:8080
 ```
 
+Tambem e possivel subir a API com MySQL via Docker Compose:
+
+```bash
+docker compose up -d --build
+```
+
+Para parar os containers:
+
+```bash
+docker compose down
+```
+
 ## Como verificar o build
 
 ```bash
